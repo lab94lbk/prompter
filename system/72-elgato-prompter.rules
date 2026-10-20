@@ -1,0 +1,7 @@
+# Elgato Prompter (DisplayLink -> evdi): move its DRM card off seat0 so the
+# compositor ignores it (aquamarine skips cards whose ID_SEAT isn't its seat),
+# and hand it to the prompter app's user instead of the seat's ACL.
+# Runs after 71-seat.rules and before 73-seat-late.rules applies uaccess.
+SUBSYSTEM=="drm", KERNEL=="card[0-9]*", DEVPATH=="/devices/platform/evdi.*", \
+  ENV{ID_SEAT}="seat-prompter", TAG-="master-of-seat", TAG-="uaccess", \
+  OWNER="tevans", MODE="0600"

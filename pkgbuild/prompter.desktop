@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Prompter
+Comment=Teleprompter for the Elgato Prompter
+Exec=prompter %f
+Icon=prompter
+Terminal=false
+Categories=AudioVideo;Video;Utility;
+MimeType=text/plain;text/markdown;
+StartupWMClass=prompter

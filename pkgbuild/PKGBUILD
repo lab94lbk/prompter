@@ -1,0 +1,23 @@
+pkgname=prompter
+pkgver=0.1.0
+pkgrel=1
+pkgdesc='Teleprompter for the Elgato Prompter, driving its screen directly'
+arch=('x86_64' 'aarch64')
+license=('MIT')
+depends=('qt6-base' 'qt6-declarative' 'qt6-wayland' 'libdrm' 'displaylink')
+makedepends=('gcc' 'make')
+source=()
+sha256sums=()
+
+build() {
+  cd "$startdir/.."
+  ./bin/build
+}
+
+package() {
+  cd "$startdir/.."
+  install -Dm755 build/prompter "$pkgdir/usr/bin/prompter"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "$startdir/prompter.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/prompter.svg"
+  install -Dm644 "$startdir/prompter.desktop" "$pkgdir/usr/share/applications/prompter.desktop"
+}
